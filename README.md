@@ -63,6 +63,6 @@ You can change the name and location of the output file by specifying the output
 EXPLAIN MORE. GET PLOT -> name in run script
 
 
-Credits to Maud Lemercier and Paola Arrubarrena from DataSig. If you have any questions, please do not hesitate to contact me or Maud at p.arrubarrena@imperial.ac.uk. 
+Credits to Maud Lemercier and Paola Arrubarrena from DataSig. If you have any questions, please do not hesitate to contact Maud or me at p.arrubarrena@imperial.ac.uk. 
 
 
