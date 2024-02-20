@@ -17,16 +17,17 @@ Our framework uses the following external modules, which should all be pulled in
 
 # Files
 
-First we need to accomodate the data in a pandas dataframe way that our framework can read. If the data is in .MS file, you have **to run `CASA_to_dataframe.py` in CASA** The path to the .MS file and the output need to be set on `CASA_to_dataframe.py`.:
+To start, the data must be formatted into a pandas dataframe for compatibility with our framework. If the data is in .MS file format, you must **execute `CASA_to_dataframe.py` within CASA**. Ensure that the path to the .MS file and the desired output location are configured within `CASA_to_dataframe.py`:
+
 ```
 execfile('CASA_to_dataframe.py')
 ```
-If the data is in the uvfits form, you can run:
+If the data is in the uvfits form, you can use:
 ```
 python3.10 UVfits_to_pysegments.py -f path/to/file/data.uvfits -n NameOfPickle
 ```
 
-The pandas dataframe has to have the following form:
+The pandas dataframe will look like this:
 
 ```
           Ant1   Ant2     FrCh                             Stream
@@ -43,14 +44,15 @@ The pandas dataframe has to have the following form:
 3121151  127.0  127.0  FrCh384  [[23815.134765625, -6.114648840593873e-07], [2...
 
 ```
-where the `Stream` column contains the complex data in a 2D stream (44379.87109375-1.060924660123419e-06j) with shape of the integration times.
-
+where the `Stream` column contains the complex data in a 2D stream format, such as (44379.87109375-1.060924660123419e-06j), with length corresponding to the integration times.
 
 `SigNova` is a framework designed for detecting radio frequency interference (RFI) in astronomical data. It loads the input files specified in the `config.yaml` file, computes the minimum Mahalanobis distance to a reference corpus of clean data, calculates the scores of inliers to calibrate the flagger, detects outliers in new data, saves the results, and generates a plot of the detected outliers. 
 
-In the `config.yaml` file, you can specify the input files for the corpus, inliers (calibration), and test data. You can also update different parameters such as stream transformations, vectorization, pysegments parameters for localizing the outliers, and compute the nearest neighbor.
-
-The _Mahalanobis distance_ is a measure of the distance between a point and a distribution, taking into account the covariance between variables. The framework uses the Mahalanobis distance to identify outliers in the input data. The _signature truncation level_ refers to the level of truncation applied to the signature map, which is used to vectorize sequences of observations. A higher level of truncation results in a lower-dimensional representation of the data, but may also result in a loss of information.
+In the `config.yaml` file, you can specify the input files for the corpus, inliers (calibration), and test data. You can also update different parameters such as:
+*stream transformations: time, lead-lag, and base-point.
+*vectorization: signature truncation level, compute expected signature.
+*pysegments: signal_tolerance ($2^{sig_tol}$ governs how much we split intervals in order to find an interval where the characteristic function is True. For example, if sig_tol=3 we have $2^{sig_tol}$=8, we will never go finer than 8.), tolerance ($2^{tol}$ is the minimum length by which we can try to extend an interval on which the characteristic function is True. For example, say we are on the interval [0,64] where the characteristic function is True, we try to extend to the right, and tol=2, that is $2^{tol}$=4. If [0,64+4] returns False, we will stop there. and just say that [0,64] is True.), use of `distfit` to fit a curve on the scores, set the threshold.
+*nearest neighbor: compute score per frequency channel.
 
 To run the framework, execute the `run_script.py` file using the command: 
 
@@ -58,9 +60,11 @@ To run the framework, execute the `run_script.py` file using the command:
 python3.10 run_script.py
 ```
 
-You can change the name and location of the output file by specifying the output_name parameter. The framework will generate a `.pkl` file containing the inliers/calibration score distribution. The scores tell us "how far" are the inliers from the corpus of clean data. 
+The framework uses the `flagger.get_inliers_scores` function in `run_script.py` to generate a `.pkl` file containing the distribution of inliers/calibration scores, indicating the deviation from the corpus of clean data.
 
-EXPLAIN MORE. GET PLOT -> name in run script
+Subsequently, the `flagger.flag` function in `run_script.py` generates a `.npy` file marking the presence of RFI with ones and zeros otherwise, arranged in a shape of (n_times, n_frequency_channels). Users can define the output location of the `.npy` file as needed.
+
+For visualization, `run_script.py` produces a waterfall plot for a single dataset using the `flagger.plot_result` function, with customizable plot locations. To generate a waterfall plot with concatenated outputs from multiple datasets, `full_pysegments_plot.py` can be utilized.
 
 
 Credits to Maud Lemercier and Paola Arrubarrena from DataSig. If you have any questions, please do not hesitate to contact Maud or me at p.arrubarrena@imperial.ac.uk. 
