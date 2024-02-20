@@ -49,9 +49,12 @@ where the `Stream` column contains the complex data in a 2D stream format, such 
 `SigNova` is a framework designed for detecting radio frequency interference (RFI) in astronomical data. It loads the input files specified in the `config.yaml` file, computes the minimum Mahalanobis distance to a reference corpus of clean data, calculates the scores of inliers to calibrate the flagger, detects outliers in new data, saves the results, and generates a plot of the detected outliers. 
 
 In the `config.yaml` file, you can specify the input files for the corpus, inliers (calibration), and test data. You can also update different parameters such as:
-* stream transformations: time, lead-lag, and base-point.
+* stream transformations: time, lead-lag, and base-point. (For visibility data we do not apply any).
 * vectorization: signature truncation level, compute expected signature.
-* pysegments: signal_tolerance ($2^{sig\_tol}$ governs how much we split intervals in order to find an interval where the characteristic function is True. For example, if $sig\_tol$=3 we have $2^{sig\_tol}$=8, we will never go finer than 8.), tolerance ($2^{tol}$ is the minimum length by which we can try to extend an interval on which the characteristic function is True. For example, say we are on the interval [0,64] where the characteristic function is True, we try to extend to the right, and $tol$=2, that is $2^{tol}$=4. If [0,64+4] returns False, we will stop there. and just say that [0,64] is True.), use of `distfit` to fit a curve on the scores, set the threshold.
+* pysegments:
+  * signal_tolerance: $2^{sig _ tol}$ governs how much we split intervals in order to find an interval where the characteristic function is True. For example, if $sig\_tol$=3 we have $2^{sig\_tol}$=8, we will never go finer than 8.).
+  * tolerance ($2^{tol}$ is the minimum length by which we can try to extend an interval on which the characteristic function is True. For example, say we are on the interval [0,64] where the characteristic function is True, we try to extend to the right, and $tol$=2, that is $2^{tol}$=4. If [0,64+4] returns False, we will stop there. and just say that [0,64] is True.).
+  * distfit: use of `distfit` to fit a curve on the scores and which curve to chose (genexteme as default), choose a threshold (0.005 as default).
 * nearest neighbor: compute score per frequency channel.
 
 To run the framework, execute the `run_script.py` file using the command: 
