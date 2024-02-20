@@ -52,8 +52,8 @@ In the `config.yaml` file, you can specify the input files for the corpus, inlie
 * stream transformations: time, lead-lag, and base-point. (For visibility data we do not apply any).
 * vectorization: signature truncation level, compute expected signature.
 * pysegments:
-  * signal_tolerance: $2^{sig\textunderscore tol}$ governs how much we split intervals in order to find an interval where the characteristic function is True. For example, if $sig\_tol$=3 we have $2^{sig\_tol}$=8, we will never go finer than 8.).
-  * tolerance ($2^{tol}$ is the minimum length by which we can try to extend an interval on which the characteristic function is True. For example, say we are on the interval [0,64] where the characteristic function is True, we try to extend to the right, and $tol$=2, that is $2^{tol}$=4. If [0,64+4] returns False, we will stop there. and just say that [0,64] is True.).
+  * signal_tolerance: defined as $2^{sig\textunderscore tol}$. It governs how much we split intervals in order to find an interval where the characteristic function is True. For example, if $sig\textunderscore tol$ = 3 we have $2^{sig\textunderscore tol}$ = 8, we will never go finer than 8.
+  * tolerance: defined as $2^{tol}$. It is the minimum length by which we can try to extend an interval on which the characteristic function is True. For example, say we are on the interval [0,64] where the characteristic function is True, we try to extend to the right, and $tol$ = 2, that is $2^{tol}$ = 4. If [0,64+4] returns False, we will stop there.
   * distfit: use of `distfit` to fit a curve on the scores and which curve to chose (genexteme as default), choose a threshold (0.005 as default).
 * nearest neighbor: compute score per frequency channel.
 
