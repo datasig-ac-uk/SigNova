@@ -1,0 +1,29 @@
+dataset:
+  base_data_dir: '/scratch/radioastro/'
+  corpus_pkl: 'RealData_1065280704_1068809832_254Ant.pkl'
+  inliers_pkl: 'RealData_1065280824.pkl'
+
+  test_pkl: 'RealData_1061318864.pkl'
+  
+
+path_transforms:
+  add_time: False
+  lead_lag: False
+  base_point: False
+  
+vectorization:
+  trunc: 5
+  expected_signature: True
+  chunk_size: 1000 # to compute the signatures in batch of chunk_size 
+
+pysegments:
+  sig_tol: -1
+  tol: 0
+  distfit: 'genextreme'  # set to 'none' to use the conformance p-value algorithm
+  #distfit: 'none'  
+  threshold: 0.005 #Real data example paper
+
+nearest_neighbor:
+  approx: False
+  per_freq: True
+  
