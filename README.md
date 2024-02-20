@@ -17,11 +17,11 @@ Our framework uses the following external modules, which should all be pulled in
 
 # Files
 
-First we need to accomodate the data in a pandas dataframe way that our framework can read. If the data is in .MS file, you have **to run `CASA_to_dataframe.py` in CASA**:
+First we need to accomodate the data in a pandas dataframe way that our framework can read. If the data is in .MS file, you have **to run `CASA_to_dataframe.py` in CASA** The path to the .MS file and the output need to be set on `CASA_to_dataframe.py`.:
 ```
 execfile('CASA_to_dataframe.py')
 ```
-The path to the .MS file and the output needs to be set on `CASA_to_dataframe.py`. If the data is in the uvfits form, you can run:
+If the data is in the uvfits form, you can run:
 ```
 python3.10 UVfits_to_pysegments.py -f path/to/file/data.uvfits -n NameOfPickle
 ```
@@ -63,6 +63,6 @@ You can change the name and location of the output file by specifying the output
 EXPLAIN MORE. GET PLOT -> name in run script
 
 
-Please note that this framework is still under development, and we would appreciate your discretion when using it. If you have any questions, please do not hesitate to contact me at p.arrubarrena@imperial.ac.uk. Credits to Maud Lemercier and Paola Arrubarrena from DataSig.
+Credits to Maud Lemercier and Paola Arrubarrena from DataSig. If you have any questions, please do not hesitate to contact me or Maud at p.arrubarrena@imperial.ac.uk. 
 
 
