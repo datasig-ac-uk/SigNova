@@ -7,7 +7,7 @@ Our framework uses the following external modules, which should all be pulled in
 * `pip3.10 install iisignature`, [iisignature](https://pypi.org/project/iisignature/) 
 * `pip3.10 install distfit`, [distfit](https://pypi.org/project/distfit/)
 * `pip3.10 install tqdm`, [tqdm](https://pypi.org/project/tqdm/)
-* `python3.10 -m pip install git+https://github.com/datasig-ac-uk/pysegments.git`, [pysegments github](https://github.com/datasig-ac-uk/pysegments)
+* `pip3.10 install pysegments-0.3-cp310-cp310-linux_x86_64.whl` (download pysegments wheel in this directory), [pysegments github](https://github.com/datasig-ac-uk/pysegments)
 * `pip3.10 install matplotlib`, [matplotlib](https://pypi.org/project/matplotlib/)
 * `pip3.10 install scipy`, [scipy](https://pypi.org/project/scipy/)
 * `pip3.10 install scikit-learn`, [sklearn](https://pypi.org/project/scikit-learn/)
