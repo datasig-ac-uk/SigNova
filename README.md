@@ -67,7 +67,7 @@ The framework uses the `flagger.get_inliers_scores` function in `run_script.py` 
 
 Subsequently, the `flagger.flag` function in `run_script.py` generates a `.npy` file marking the presence of RFI with ones and zeros otherwise, arranged in a shape of (n_times, n_frequency_channels). Users can define the output location of the `.npy` file as needed.
 
-For visualization, `run_script.py` produces a waterfall plot for a single dataset using the `flagger.plot_result` function, with customizable plot locations. To generate a waterfall plot with concatenated outputs from multiple datasets, `full_pysegments_plot.py` can be utilized.
+For visualization, `run_script.py` produces a waterfall plot for a single dataset using the `flagger.plot_result` function, with customizable plot locations. You can specify if you are using MWA telescope data or HERA. To generate a waterfall plot with concatenated outputs from multiple datasets, `full_pysegments_plot.py` can be utilized.
 
 
 Credits to Maud Lemercier and Paola Arrubarrena from DataSig. If you have any questions, please do not hesitate to contact Maud or me at p.arrubarrena@imperial.ac.uk. 
