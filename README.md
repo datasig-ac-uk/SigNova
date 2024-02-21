@@ -44,7 +44,7 @@ The pandas dataframe will look like this:
 3121151  127.0  127.0  FrCh384  [[23815.134765625, -6.114648840593873e-07], [2...
 
 ```
-where the `Stream` column contains the complex data in a 2D stream format, such as (44379.87109375-1.060924660123419e-06j), with length corresponding to the integration times.
+where the `Stream` column contains the complex data in a 2D stream format, such as (44379.87109375-1.060924660123419e-06j), with length corresponding to the integration times. This has to be done for the **clean** datasets (corpus and calibration) and for the **test** dataset.
 
 `SigNova` is a framework designed for detecting radio frequency interference (RFI) in astronomical data. It loads the input files specified in the `config.yaml` file, computes the minimum Mahalanobis distance to a reference corpus of clean data, calculates the scores of inliers to calibrate the flagger, detects outliers in new data, saves the results, and generates a plot of the detected outliers. 
 
