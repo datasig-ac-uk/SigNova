@@ -72,4 +72,14 @@ For visualization, `run_script.py` produces a waterfall plot for a single datase
 
 Credits to Maud Lemercier and Paola Arrubarrena from DataSig. If you have any questions, please do not hesitate to contact Maud at maud.lemercier@maths.ox.ac.uk or me at p.arrubarrena@imperial.ac.uk. 
 
+# Citation
+
+```
+@article{arrubarrena2024novelty,
+  title={Novelty Detection on Radio Astronomy Data using Signatures},
+  author={Arrubarrena, Paola and Lemercier, Maud and Nikolic, Bojan and Lyons, Terry and Cass, Thomas},
+  journal={arXiv preprint arXiv:2402.14892},
+  year={2024}
+}
+```
 
