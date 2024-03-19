@@ -70,7 +70,7 @@ Subsequently, the `flagger.flag` function in `run_script.py` generates a `.npy` 
 For visualization, `run_script.py` produces a waterfall plot for a single dataset using the `flagger.plot_result` function, with customizable plot locations. You can specify if you are using MWA telescope data or HERA. To generate a waterfall plot with concatenated outputs from multiple datasets, `full_pysegments_plot.py` can be utilized.
 
 
-Credits to Maud Lemercier and Paola Arrubarrena from DataSig. If you have any questions, please do not hesitate to contact Maud at maud.lemercier@maths.ox.ac.uk or me at p.arrubarrena@imperial.ac.uk. 
+Credits to Maud Lemercier and Paola Arrubarrena from DataSig. If you have any questions, please do not hesitate to contact Maud at maud.lemercier@maths.ox.ac.uk Paola me at p.arrubarrena@imperial.ac.uk. 
 
 # Citation
 
