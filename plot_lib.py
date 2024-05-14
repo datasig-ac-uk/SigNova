@@ -10,24 +10,15 @@ def image_plot(fig, ax, data, cmap=None, vmin=None, vmax=None, title='', xlabel=
         cmap = cm.plasma
 
     class MidpointNormalize(colors.Normalize):
-
-        """
-        A short class which is used by image_plot to keep zero at the color-center
-        of diverging colormaps.
-        """
+        
 
         def __init__(self, vmin=None, vmax=None, midpoint=None, clip=False):
-            """
-            A short init line using inheritance
-            """
+           
             self.midpoint = midpoint
             colors.Normalize.__init__(self, vmin, vmax, clip)
 
-        def __call__(self, value, clip=None):
-            """
-            Colormapping function
-            """
-            # ignoring masked values and all kinds of edge cases
+        def __call__(self, value, clip=None):  
+        
             result, is_scalar = self.process_value(value)
             x, y = [self.vmin, self.midpoint, self.vmax], [0, 0.5, 1]
             return np.ma.array(np.interp(value, x, y), mask=result.mask, copy=False)
